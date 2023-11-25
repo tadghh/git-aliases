@@ -13,12 +13,32 @@ Git aliases simplifying common or odd tasks.
 ## Aliases
 
 ### Atomic commits
-add untracked files, commit, and push
+add untracked files, commit, and push.
 
 <dl>
   <dt>Usage</dt>
   <dd>git atomic "Title" "Message"</dd>
 
   <dt>Install Command</dt>
-  <dd>git config --global alias.atomic '!f() { git add . && git commit -am "$1" && git push; }; f'</dd>
+  <dd>
+    
+    git config --global alias.atomic '!f() { git add . && git commit -am "$1" && git push; }; f'
+  </dd>
+</dl>
+
+
+___
+
+### Refresh local
+Clears all local changes and pulls the latest version of the current branch.
+
+<dl>
+  <dt>Usage</dt>
+  <dd>git fresh</dd>
+
+  <dt>Install Command</dt>
+  <dd>
+    
+    git config --global alias.fresh '!f() { current_branch=$(git rev-parse --abbrev-ref HEAD); git reset --hard; git fetch origin; git checkout $current_branch; git pull origin $current_branch; }; f'
+  </dd>
 </dl>
